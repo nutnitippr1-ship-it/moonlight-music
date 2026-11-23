@@ -31,12 +31,6 @@ var iv=setInterval(function(){
  function sync(){
   var i=-1;tabs.forEach(function(t,k){if(t.classList.contains('on'))i=k;});
   root.setAttribute('data-tab',i);
-  if(i===0&&!s.style.backgroundImage)s.style.backgroundImage='url("'+BASE+'mck-bg-sing.webp")';
+  if(i===0&&!s.style.backgroundImage)s.style.backgroundImage='url("'+BASE.replace('music/','music@main/')+'mck-bg-sing.webp")';
   if(i===1&&!o.style.backgroundImage)o.style.backgroundImage='url("'+BASE+'mck-bg-music.webp")';
   if(i===2&&!p.style.backgroundImage)p.style.backgroundImage='url("'+BASE+'mck-bg-photo.webp")';
- }
- var mo=new MutationObserver(sync);
- tabs.forEach(function(t){mo.observe(t,{attributes:true,attributeFilter:['class']});});
- sync();
-},500);
-})();
